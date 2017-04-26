@@ -1,0 +1,6 @@
+---
+- hosts: workers
+  
+  tasks:
+  - name: initializing swarm
+    script: clean.sh

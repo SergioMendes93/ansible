@@ -1,0 +1,6 @@
+---
+- hosts: worker3
+
+  tasks:
+  - name: initializing swarm
+    script: swarm.sh "146.193.41.143:2375"

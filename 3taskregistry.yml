@@ -1,0 +1,11 @@
+---
+- hosts: worker3
+  
+  tasks:
+  - git: repo=https://github.com/SergioMendes93/taskregistry.git
+         dest=/home/smendes/taskregistry
+
+  - name: launching task registry
+    command: /home/smendes/taskregistry/taskregistry
+    async: 0
+    poll: 0

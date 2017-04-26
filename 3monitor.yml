@@ -1,0 +1,11 @@
+---
+- hosts: worker3
+  
+  tasks:
+  - git: repo=https://github.com/SergioMendes93/monitor.git
+         dest=/home/smendes/monitor
+
+#  - name: launching monitor
+#    command: /home/smendes/monitor/hyperic-sigar-1.6.4-src/bindings/java/examples javac -cp "../sigar-bin/lib/*" energymonitoring.java
+#    command: /home/smendes/monitor/hyperic-sigar-1.6.4-src/bindings/java/examples/ java -cp "../sigar-bin/lib/*":. energymonitoring
+#    command: /home/smendes/monitor/hyperic-sigar-1.6.4-src/bindings/java/examples/ java energymonitoring
