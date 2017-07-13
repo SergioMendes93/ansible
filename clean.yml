@@ -1,6 +1,7 @@
 ---
 - hosts: workers
+  become: true
   
   tasks:
   - name: initializing swarm
-    script: clean.sh
+    shell: cd /home/smendes; bash clean.sh

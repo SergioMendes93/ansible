@@ -1,10 +1,12 @@
 ---
 - hosts: worker3
+  become: true
   
   tasks:
   - git: repo=https://github.com/SergioMendes93/taskregistry.git
          dest=/home/smendes/taskregistry
-
+         version=benchmark
+  
   - name: launching task registry
     command: /home/smendes/taskregistry/taskregistry
     async: 0

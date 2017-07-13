@@ -1,10 +1,26 @@
 ---
 - hosts: worker3
-  
+  become: true  
+
   tasks:
   - git: repo=https://github.com/SergioMendes93/monitor.git
          dest=/home/smendes/monitor
+         version=benchmark
+         force=yes
 
+  - name: launching monitor
+#    command: javac -cp "/home/smendes/monitor/hyperic-sigar-1.6.4-src/bindings/java/sigar-bin/lib/*" /home/smendes/monitor/hyperic-sigar-1.6.4-src/bindings/java/examples/energymonitoring.java
+#    command: java -cp  "/home/smendes/monitor/hyperic-sigar-1.6.4-src/bindings/java/sigar-bin/lib/*"  /home/smendes/monitor/hyperic-sigar-1.6.4-src/bindings/java/examples/energymonitoring
+#    command: "{{item}}"
+#    with_items: 
+#       - javac -cp "/home/smendes/monitor/hyperic-sigar-1.6.4-src/bindings/java/sigar-bin/lib/*" /home/smendes/monitor/hyperic-sigar-1.6.4-src/bindings/java/examples/energymonitoring.java
+#       - java -cp "/home/smendes/monitor/hyperic-sigar-1.6.4-src/bindings/java/sigar-bin/lib/*":. /home/smendes/monitor/hyperic-sigar-1.6.4-src/bindings/java/examples/energymonitoring
+    shell: cd /home/smendes/monitor/hyperic-sigar-1.6.4-src/bindings/java/examples/; javac -cp "/home/smendes/monitor/hyperic-sigar-1.6.4-src/bindings/java/sigar-bin/lib/*" energymonitoring.java; java -cp "/home/smendes/monitor/hyperic-sigar-1.6.4-src/bindings/java/sigar-bin/lib/*":. energymonitoring
+    async: 0
+    poll: 0
+
+#   shell: cd /home/smendes/monitor/hyperic-sigar-1.6.4-src/bindings/java/examples javac -cp "../sigar-bin/lib/*" energymonitoring.java  | 
+#   shell: cd /home/smendes/monitor/hyperic-sigar-1.6.4-src/bindings/java/examples java -cp "../sigar-bin/lib/*":. energymonitoring
 #  - name: launching monitor
 #    command: /home/smendes/monitor/hyperic-sigar-1.6.4-src/bindings/java/examples javac -cp "../sigar-bin/lib/*" energymonitoring.java
 #    command: /home/smendes/monitor/hyperic-sigar-1.6.4-src/bindings/java/examples/ java -cp "../sigar-bin/lib/*":. energymonitoring

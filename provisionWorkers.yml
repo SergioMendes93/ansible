@@ -1,30 +1,33 @@
 ---
-#- hosts: worker1
+- hosts: workers
+  become: true
+  
+  tasks:
+  - name: initializing swarm
+    shell: cd  /home/smendes/; bash swarm.sh
+    async: 0
+    poll: 0 
+
+#- hosts: worker33
+#
+#  tasks:
+#  - name: initializing swarm
+#    script: swarm.sh "146.193.41.143:2375"
+
+#- hosts: worker4
   
 #  tasks:
 #  - name: initializing swarm
-#    script: swarm.sh "146.193.41.141:2375"
-
-- hosts: worker3
-
-  tasks:
-  - name: initializing swarm
-    script: swarm.sh "146.193.41.143:2375"
-
-- hosts: worker4
-  
-  tasks:
-  - name: initializing swarm
-    script: swarm.sh "146.193.41.144:2375"
+#    script: swarm.sh "146.193.41.144:2375"
 
 #- hosts: worker5
   
 #  tasks:
- # - name: initializing swarm
-  #  script: swarm.sh "146.193.41.145:2375"
+#  - name: initializing swarm
+#    script: swarm.sh "146.193.41.145:2375"
 
 #- hosts: worker6
   
- # tasks:
-  #- name: initializing swarm
-  #  script: swarm.sh "146.193.41.146:2375"
+#  tasks:
+#  - name: initializing swarm
+#    script: swarm.sh "146.193.41.146:2375"

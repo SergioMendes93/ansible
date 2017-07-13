@@ -1,7 +1,7 @@
 [all:vars]
 ansible_connection=ssh
-ansible_ssh_user=smendes
-ansible_ssh_pass=smendes987
+ansible_ssh_user=admin12
+ansible_ssh_pass=admin12@
 
 [workers]
 146.193.41.141
@@ -19,6 +19,11 @@ ansible_ssh_pass=smendes987
 [worker3]
 146.193.41.143
 146.193.41.144
+146.193.41.146
+146.193.41.145
+
+[worker33]
+146.193.41.143
 
 [worker4]
 146.193.41.144
